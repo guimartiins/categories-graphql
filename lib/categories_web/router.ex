@@ -3,10 +3,19 @@ defmodule CategoriesWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug Plug.Parsers,
+      parsers: [:urlencoded, :multipart, :json, Absinthe.Plug.Parser],
+      pass: ["*/*"],
+      json_decoder: Jason
   end
 
-  scope "/api", CategoriesWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: CategoriesWeb.Schema,
+      interface: :playground
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
