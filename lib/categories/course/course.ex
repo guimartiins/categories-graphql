@@ -1,4 +1,7 @@
 defmodule Course do
+  @moduledoc """
+  The Course module is used to define the Course schema.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -12,7 +15,7 @@ defmodule Course do
     timestamps()
   end
 
-  def changeset(struct, attrs) do
+  def changeset(struct \\ %__MODULE__{}, attrs) do
     struct
     |> cast(attrs, [:name, :description, :category_id])
     |> validate_required(@required_fields)

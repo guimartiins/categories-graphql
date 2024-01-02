@@ -1,4 +1,5 @@
 defmodule Categories.MixProject do
+  @moduledoc false
   use Mix.Project
 
   def project do
@@ -19,7 +20,7 @@ defmodule Categories.MixProject do
   def application do
     [
       mod: {Categories.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_machina]
     ]
   end
 
@@ -46,7 +47,10 @@ defmodule Categories.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
       {:absinthe, "~> 1.7"},
-      {:absinthe_plug, "~> 1.5"}
+      {:absinthe_plug, "~> 1.5"},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:faker, "~> 0.17", only: :test}
     ]
   end
 

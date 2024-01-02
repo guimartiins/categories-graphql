@@ -1,10 +1,13 @@
 defmodule CategoriesWeb.GraphQL.Resolvers.Courses do
+  @moduledoc """
+  The Courses resolver module is used to resolve the GraphQL queries and mutations.
+  """
   def list(_root, _params, _) do
-    Categories.Courses.all()
+    Courses.all()
   end
 
   def create(_root, params, _) do
-    case Categories.Courses.create(params) do
+    case Courses.create(params) do
       {:ok, course} -> {:ok, course}
       {:error, changeset} -> {:error, changeset}
     end

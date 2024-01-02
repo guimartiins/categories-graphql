@@ -1,4 +1,8 @@
 defmodule CategoriesWeb.Schema do
+  @moduledoc """
+  The Schema module is used to define the GraphQL schema.
+  """
+
   use Absinthe.Schema
   alias CategoriesWeb.GraphQL.Resolvers
 

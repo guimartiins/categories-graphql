@@ -1,10 +1,10 @@
-defmodule Categories.Courses do
+defmodule Courses do
   @moduledoc """
     The Courses context
   """
 
-  alias Course
   alias Categories.Repo
+  alias Course
 
   def all, do: Repo.all(Course)
 

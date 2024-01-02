@@ -1,4 +1,8 @@
 defmodule Category do
+  @moduledoc """
+  The Category module is used to define the Category schema.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -13,7 +17,7 @@ defmodule Category do
     timestamps()
   end
 
-  def changeset(struct, attrs) do
+  def changeset(struct \\ %__MODULE__{}, attrs) do
     struct
     |> cast(attrs, [:name, :description])
     |> validate_required(@required_fields)

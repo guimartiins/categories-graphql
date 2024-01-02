@@ -3,8 +3,8 @@ defmodule Categories.Categories do
     The Categories context
   """
 
-  alias Category
   alias Categories.Repo
+  alias Category
 
   def all, do: Repo.all(Category) |> Repo.preload(:courses)
 
