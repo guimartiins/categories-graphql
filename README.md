@@ -1,18 +1,48 @@
 # Categories
 
-To start your Phoenix server:
+This is an application that a wrote to practice graphQL. There are 2 entities to interact, `Categories` and `Courses`.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+Categories has many Courses, and Courses has one Category.
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+![Diagram](./assets/category.png)
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## Queries and Mutations
 
-## Learn more
+You can use these queries and mutations below.
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+```graphql
+  query listCategories {
+    listCategories{
+      id
+      name
+      description
+      insertedAt
+      updatedAt
+    }
+  }
+
+  query listCourses {
+  listCourses{
+    id
+    name
+    description
+  }
+}
+
+mutation CreateCategory($name: String!, $description: String) {
+	createCategory(name: $name, description: $description) {
+    id
+  }
+}
+
+mutation CreateCourse($name: String!, $description: String, $categoryId: Integer!) {
+	createCourse(name: $name, description: $description, categoryId: $categoryId) {
+    id
+  }
+
+```
+
+## How to run?
+
+The application and database are in containers, so you'll need to have docker installed.
+Run `docker-compose up -d` and the application will run in `http://localhost:4000/api/grapihl`
