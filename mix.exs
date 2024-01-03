@@ -20,7 +20,7 @@ defmodule Categories.MixProject do
   def application do
     [
       mod: {Categories.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ex_machina]
+      extra_applications: [:logger, :runtime_tools]
     ]
   end
 
